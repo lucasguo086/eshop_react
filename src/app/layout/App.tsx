@@ -1,23 +1,27 @@
 import React, {useEffect, useState} from 'react';
-import logo from '../../logo.svg';
 import './App.css';
-import {Typography} from "@mui/material";
-import {Product} from "../../product";
+import {Container, createTheme, CssBaseline, ThemeProvider, Typography} from "@mui/material";
+import {Product} from "../models/product";
 import Catalog from '../../features/catalog/Catalog';
+import Header from "./Header";
 
-function App() {
-    const[products,setProducts] = useState<Product[]>([]);
-    useEffect(()=>{
-        fetch('https://eshopapidemo.azurewebsites.net/api/ViewProducts')
-            .then(response => response.json())
-            .then(data => setProducts(data))
+function App(){
+    const theme = createTheme({
+        palette:{
+            mode:'dark'
+        }
     })
-  return (
-      <div>
-        <Typography variant='h1'>Eshop</Typography>
-          <Catalog products={products}/>
-      </div>
-  );
+    return (
+        <>
+            <CssBaseline/>
+            <Header/>
+            <Container>
+                <Catalog />
+            </Container>
+        </>
+
+
+    );
 }
 
 export default App;

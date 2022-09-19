@@ -1,4 +1,4 @@
-import {Product} from "../../product";
+import {Product} from "../../app/models/product";
 import {Avatar, Button, List, ListItem, ListItemAvatar, ListItemText} from "@mui/material";
 interface Props{
     products:Product[];
